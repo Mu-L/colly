@@ -30,7 +30,7 @@ Special codes for Colly users:
 - **COLLY35** - 35% off to Mobile and Residential Proxies
 - **COLLY40** - 40% off to ISP (Static) Proxies
 
-[![NodeMaven](assets/nodemaven)](https://go.nodemaven.com/CollyGitHub)
+[![NodeMaven](assets/nodemaven.png)](https://go.nodemaven.com/CollyGitHub)
 
 
 ## Features
