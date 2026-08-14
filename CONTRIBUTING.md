@@ -32,7 +32,6 @@ Anyone can file an expense. If the expense makes sense for the development of th
 ## Questions
 
 If you have any questions, create an [issue](https://github.com/gocolly/colly/issues/new) (protip: do a quick search first to see if someone else didn't ask the same question before!).
-You can also reach us at hello@colly.opencollective.com.
 
 ## Credits
 
@@ -41,27 +40,21 @@ You can also reach us at hello@colly.opencollective.com.
 Thank you to all the people who have already contributed to colly!
 <a href="graphs/contributors"><img src="https://opencollective.com/colly/contributors.svg?width=890" /></a>
 
+## AI Policy
 
-### Backers
+### Restrictions on Generative AI Usage
 
-Thank you to all our backers! [[Become a backer](https://opencollective.com/colly#backer)]
+- **All AI usage in any form must be disclosed.** You must state the tool you used (e.g. Claude Code, Cursor, Amp) along with the extent that the work was AI-assisted.
+- **The human-in-the-loop must fully understand all code.** If you use generative AI tools as an aid in developing code or documentation changes, ensure that you fully understand the proposed changes and can explain why they are the correct approach.
+- **AI should never be the main author of the PR.** AI may be used as a tool to help with developing, but the human contribution to the code changes should always be reasonably larger than the part written by AI. For example, you should be the one that decides about the structure of the PR, not the LLM.
+- **Issues and PR descriptions must be fully human-written.** Do not post output from Large Language Models or similar generative AI as comments on any of our discussion forums, as such comments tend to be formulaic and low content. If you're not a native English speaker, using AI for translating self-written issue texts to English is okay, but please keep the wording as close as possible to the original wording.
+- **Bad AI drivers will be denounced.** People who produce bad contributions that are clearly AI (slop) will be blocked for all future contributions.
+- **AI should never be used for "good first issues"** The purpose of "good first issues" is to provide a smooth on boarding experience for anyone who would like to be involved in contributing to a project and not to be a low hanging fruit for AI models.
 
-<a href="https://opencollective.com/colly#backers" target="_blank"><img src="https://opencollective.com/colly/backers.svg?width=890"></a>
+### There are Humans Here
 
+Every discussion, issue, and pull request is read and reviewed by humans. It is a boundary point at which people interact with each other and the work done. It is rude and disrespectful to approach this boundary with low-effort, unqualified work, since it puts the burden of validation on the maintainer.
 
-### Sponsors
+It takes a lot of maintainer time and energy to review AI-generated contributions! Sending the output of an LLM to open source project maintainers extracts work from them in the form of design and code review, so we call this kind of contribution an "extractive contribution".
 
-Thank you to all our sponsors! (please ask your company to also support this open source project by [becoming a sponsor](https://opencollective.com/colly#sponsor))
-
-<a href="https://opencollective.com/colly/sponsor/0/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/1/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/2/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/3/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/4/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/5/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/6/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/7/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/8/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/colly/sponsor/9/website" target="_blank"><img src="https://opencollective.com/colly/sponsor/9/avatar.svg"></a>
-
-<!-- This `CONTRIBUTING.md` is based on @nayafia's template https://github.com/nayafia/contributing-template -->
+The _golden rule_ is that a contribution should be worth more to the project than the time it takes to review it, which is usually not the case if large parts of your PR were written by LLMs.
