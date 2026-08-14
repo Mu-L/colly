@@ -1580,7 +1580,7 @@ func createMultipartReader(boundary string, data map[string][]byte) io.Reader {
 	buffer.WriteString("Content-type: multipart/form-data; boundary=" + boundary + "\n\n")
 	for contentType, content := range data {
 		buffer.WriteString(dashBoundary + "\n")
-		buffer.WriteString("Content-Disposition: form-data; name=" + contentType + "\n")
+		buffer.WriteString("Content-Disposition: form-data; name=\"" + escapeMultipartFieldName(contentType) + "\"\n")
 		buffer.WriteString(fmt.Sprintf("Content-Length: %d \n\n", len(content)))
 		buffer.Write(content)
 		buffer.WriteString("\n")
@@ -1588,6 +1588,25 @@ func createMultipartReader(boundary string, data map[string][]byte) io.Reader {
 	buffer.WriteString(dashBoundary + "--\n\n")
 	return bytes.NewReader(buffer.Bytes())
 
+}
+
+// multipartFieldNameEscaper escapes a field name for use in a
+// Content-Disposition header, following RFC 7578 section 4.2:
+// backslash and double quote are backslash-escaped, and CR / LF are
+// percent-encoded so a field name cannot inject header lines.
+//
+// strings.NewReplacer operates on the raw byte sequence, preserving
+// invalid UTF-8 bytes that a range loop over the string would silently
+// replace with U+FFFD.
+var multipartFieldNameEscaper = strings.NewReplacer(
+	`\`, `\\`,
+	`"`, `\"`,
+	"\r", "%0D",
+	"\n", "%0A",
+)
+
+func escapeMultipartFieldName(s string) string {
+	return multipartFieldNameEscaper.Replace(s)
 }
 
 // randomBoundary was borrowed from

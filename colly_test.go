@@ -21,6 +21,8 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"io"
+	"mime/multipart"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
@@ -2291,5 +2293,62 @@ func TestRequestMarshalRoundtripHost(t *testing.T) {
 	}
 	if got.Host != "vhost.example.com" {
 		t.Errorf("Host not preserved: got %q want %q", got.Host, "vhost.example.com")
+	}
+}
+
+func TestPostMultipartEscapesFieldNames(t *testing.T) {
+	boundary := "test-boundary"
+	data := map[string][]byte{
+		"normal":      []byte("value"),
+		"quote\"d":    []byte("v1"),
+		"back\\slash": []byte("v2"),
+		"new\r\nline": []byte("v3"),
+	}
+	raw, err := io.ReadAll(createMultipartReader(boundary, data))
+	if err != nil {
+		t.Fatalf("unexpected error reading multipart body: %v", err)
+	}
+
+	mr := multipart.NewReader(bytes.NewReader(raw), boundary)
+	// The generated body starts with a Content-type preamble line, which
+	// multipart readers are allowed to skip.
+	names := map[string]bool{}
+	for {
+		part, err := mr.NextPart()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			t.Fatalf("unexpected error parsing multipart body: %v", err)
+		}
+		names[part.FormName()] = true
+	}
+	// Go's multipart parser unescapes quoted-string values (\" -> ", \\ -> \)
+	// while percent-encoded CR/LF stays literal, per RFC 7578 §4.2.
+	for _, want := range []string{`normal`, `quote"d`, `back\slash`, "new%0D%0Aline"} {
+		if !names[want] {
+			t.Errorf("expected escaped field name %q in parsed parts, got %v", want, names)
+		}
+	}
+	// Ensure no raw header injection: the raw body must not contain the
+	// unescaped field name with a newline.
+	if bytes.Contains(raw, []byte("name=\"new\r\nline\"")) {
+		t.Errorf("raw multipart body contains unescaped newline in field name")
+	}
+}
+
+func TestEscapeMultipartFieldNamePreservesInvalidUTF8(t *testing.T) {
+	// A range loop over the string would replace these bytes with U+FFFD,
+	// silently corrupting the field name. strings.NewReplacer keeps the
+	// original bytes intact.
+	name := "bad\xff\xfe"
+	escaped := escapeMultipartFieldName(name)
+	if !strings.Contains(escaped, "\xff\xfe") {
+		t.Errorf("escapeMultipartFieldName dropped invalid UTF-8 bytes: %q", escaped)
+	}
+	// U+FFFD encodes to EF BF BD in UTF-8; check the raw bytes rather than
+	// using ContainsRune, which would itself decode the invalid bytes.
+	if bytes.Contains([]byte(escaped), []byte{0xEF, 0xBF, 0xBD}) {
+		t.Errorf("escapeMultipartFieldName replaced invalid UTF-8 with U+FFFD: %q", escaped)
 	}
 }
