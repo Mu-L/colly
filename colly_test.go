@@ -2299,8 +2299,8 @@ func TestRequestMarshalRoundtripHost(t *testing.T) {
 func TestPostMultipartEscapesFieldNames(t *testing.T) {
 	boundary := "test-boundary"
 	data := map[string][]byte{
-		"normal":     []byte("value"),
-		"quote\"d":   []byte("v1"),
+		"normal":      []byte("value"),
+		"quote\"d":    []byte("v1"),
 		"back\\slash": []byte("v2"),
 		"new\r\nline": []byte("v3"),
 	}
