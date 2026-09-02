@@ -15,9 +15,9 @@ With Colly you can easily extract structured data from websites, which can be us
 [![Twitter URL](https://img.shields.io/badge/twitter-follow-green.svg)](https://twitter.com/gocolly)
 
 
-## Sponsor
+## Sponsors
 
-[NodeMaven](https://go.nodemaven.com/CollyGitHub): The most efficient proxy provider for Web Scrapping and Automation with the Highest Quality IP on the market.
+### [NodeMaven](https://go.nodemaven.com/CollyGitHub): The most efficient proxy provider for Web Scrapping and Automation with the Highest Quality IP on the market.
 
 Why [NodeMaven](https://go.nodemaven.com/CollyGitHub)?
 - 99.9% uptime
@@ -32,6 +32,12 @@ Special codes for Colly users:
 
 [![NodeMaven](assets/nodemaven.png)](https://go.nodemaven.com/CollyGitHub)
 
+
+### [SerpApi](https://serpapi.com/colly): Web Search API for your AI apps
+
+Access real-time data from search engines such as Google, Bing, YouTube, Amazon, and more in structured JSON or Markdown results via a simple API
+
+[![SerpApi](assets/serpapi.png)](https://serpapi.com/colly)
 
 ## Features
 
