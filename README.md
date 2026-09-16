@@ -17,9 +17,9 @@ With Colly you can easily extract structured data from websites, which can be us
 
 ## Sponsors
 
-### [NodeMaven](https://go.nodemaven.com/CollyGitHub): The most efficient proxy provider for Web Scrapping and Automation with the Highest Quality IP on the market.
+### [NodeMaven](https://go.nodemaven.com/CollyreadmeSeptember): The most efficient proxy provider for Web Scrapping and Automation with the Highest Quality IP on the market.
 
-Why [NodeMaven](https://go.nodemaven.com/CollyGitHub)?
+Why [NodeMaven](https://go.nodemaven.com/CollyreadmeSeptember)?
 - 99.9% uptime
 - ZIP Targeting
 - IP filtering: all proxies have fraud score <97%
@@ -30,7 +30,7 @@ Special codes for Colly users:
 - **COLLY35** - 35% off to Mobile and Residential Proxies
 - **COLLY40** - 40% off to ISP (Static) Proxies
 
-[![NodeMaven](assets/nodemaven.png)](https://go.nodemaven.com/CollyGitHub)
+[![NodeMaven](assets/nodemaven.png)](https://go.nodemaven.com/CollyreadmeSeptember)
 
 
 ### [SerpApi](https://serpapi.com/colly): Web Search API for your AI apps
